@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "6c71f58e-9786-4bc0-ba0b-99b787490841",
+		"name": "Parcial2",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38796364"
+	},
+	"item": [
+		{
+			"name": "Get data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/jugador/por-equipo/50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jugador",
+						"por-equipo",
+						"50"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Post data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"nombre\": \"Luis Ramírez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 18,\n    \"fechaNacimiento\": \"2004-08-04\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 1\n    }\n  },\n  {\n    \"nombre\": \"Miguel Vargas\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 96,\n    \"fechaNacimiento\": \"1994-05-21\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 2\n    }\n  },\n  {\n    \"nombre\": \"Pedro López\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 19,\n    \"fechaNacimiento\": \"2001-03-05\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 3\n    }\n  },\n  {\n    \"nombre\": \"José Pérez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 8,\n    \"fechaNacimiento\": \"1994-11-01\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 4\n    }\n  },\n  {\n    \"nombre\": \"Andrés Ramírez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 70,\n    \"fechaNacimiento\": \"1999-10-11\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 5\n    }\n  },\n  {\n    \"nombre\": \"Juan García\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 80,\n    \"fechaNacimiento\": \"1991-08-31\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 6\n    }\n  },\n  {\n    \"nombre\": \"Andrés Castro\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 91,\n    \"fechaNacimiento\": \"2006-01-27\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 7\n    }\n  },\n  {\n    \"nombre\": \"Javier García\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 58,\n    \"fechaNacimiento\": \"2001-12-21\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 8\n    }\n  },\n  {\n    \"nombre\": \"Pedro Martínez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 99,\n    \"fechaNacimiento\": \"1990-05-24\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 9\n    }\n  },\n  {\n    \"nombre\": \"José Pérez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 70,\n    \"fechaNacimiento\": \"2003-11-05\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 10\n    }\n  },\n  {\n    \"nombre\": \"Luis Pérez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 78,\n    \"fechaNacimiento\": \"2001-09-09\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 11\n    }\n  },\n  {\n    \"nombre\": \"Fernando Rodríguez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 97,\n    \"fechaNacimiento\": \"2002-11-17\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 12\n    }\n  },\n  {\n    \"nombre\": \"Luis Martínez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 25,\n    \"fechaNacimiento\": \"2002-10-11\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 13\n    }\n  },\n  {\n    \"nombre\": \"Diego Martínez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 83,\n    \"fechaNacimiento\": \"1992-05-11\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 14\n    }\n  },\n  {\n    \"nombre\": \"Pedro Torres\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 65,\n    \"fechaNacimiento\": \"1992-10-09\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 15\n    }\n  },\n  {\n    \"nombre\": \"Miguel Rodríguez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 66,\n    \"fechaNacimiento\": \"1996-02-20\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 16\n    }\n  },\n  {\n    \"nombre\": \"Javier Ramírez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 77,\n    \"fechaNacimiento\": \"1992-05-16\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 17\n    }\n  },\n  {\n    \"nombre\": \"Diego Ramírez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 79,\n    \"fechaNacimiento\": \"1992-06-19\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 18\n    }\n  },\n  {\n    \"nombre\": \"José Torres\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 24,\n    \"fechaNacimiento\": \"1991-10-22\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 19\n    }\n  },\n  {\n    \"nombre\": \"Luis Castro\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 11,\n    \"fechaNacimiento\": \"1996-06-19\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 20\n    }\n  },\n  {\n    \"nombre\": \"Miguel López\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 54,\n    \"fechaNacimiento\": \"2000-08-22\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 21\n    }\n  },\n  {\n    \"nombre\": \"Miguel Martínez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 29,\n    \"fechaNacimiento\": \"2002-12-29\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 22\n    }\n  },\n  {\n    \"nombre\": \"Miguel Martínez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 76,\n    \"fechaNacimiento\": \"1997-10-19\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 23\n    }\n  },\n  {\n    \"nombre\": \"Andrés García\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 45,\n    \"fechaNacimiento\": \"2006-01-03\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 24\n    }\n  },\n  {\n    \"nombre\": \"Luis Vargas\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 58,\n    \"fechaNacimiento\": \"2006-04-17\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 25\n    }\n  },\n  {\n    \"nombre\": \"Javier Ramírez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 32,\n    \"fechaNacimiento\": \"1994-03-25\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 26\n    }\n  },\n  {\n    \"nombre\": \"Fernando Pérez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 57,\n    \"fechaNacimiento\": \"1995-10-20\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 27\n    }\n  },\n  {\n    \"nombre\": \"Pedro Pérez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 37,\n    \"fechaNacimiento\": \"2006-02-22\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 28\n    }\n  },\n  {\n    \"nombre\": \"Miguel Vargas\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 54,\n    \"fechaNacimiento\": \"2005-11-06\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 29\n    }\n  },\n  {\n    \"nombre\": \"Fernando Vargas\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 63,\n    \"fechaNacimiento\": \"1992-12-09\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 30\n    }\n  },\n  {\n    \"nombre\": \"Pedro Vargas\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 39,\n    \"fechaNacimiento\": \"1995-05-24\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 31\n    }\n  },\n  {\n    \"nombre\": \"Pedro Rodríguez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 58,\n    \"fechaNacimiento\": \"2003-05-20\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 32\n    }\n  },\n  {\n    \"nombre\": \"Juan Rodríguez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 94,\n    \"fechaNacimiento\": \"1992-12-16\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 33\n    }\n  },\n  {\n    \"nombre\": \"Javier Vargas\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 14,\n    \"fechaNacimiento\": \"1999-09-28\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 34\n    }\n  },\n  {\n    \"nombre\": \"Juan Torres\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 1,\n    \"fechaNacimiento\": \"1998-04-13\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 35\n    }\n  },\n  {\n    \"nombre\": \"Fernando Rodríguez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 39,\n    \"fechaNacimiento\": \"1995-08-13\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 36\n    }\n  },\n  {\n    \"nombre\": \"Andrés Vargas\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 60,\n    \"fechaNacimiento\": \"2004-12-18\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 37\n    }\n  },\n  {\n    \"nombre\": \"Fernando Castro\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 39,\n    \"fechaNacimiento\": \"1999-06-29\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 38\n    }\n  },\n  {\n    \"nombre\": \"Javier Martínez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 70,\n    \"fechaNacimiento\": \"1996-11-10\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 39\n    }\n  },\n  {\n    \"nombre\": \"Pedro García\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 79,\n    \"fechaNacimiento\": \"2000-08-27\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 40\n    }\n  },\n  {\n    \"nombre\": \"Miguel García\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 50,\n    \"fechaNacimiento\": \"1992-09-11\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 41\n    }\n  },\n  {\n    \"nombre\": \"José Ramírez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 95,\n    \"fechaNacimiento\": \"2002-03-24\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 42\n    }\n  },\n  {\n    \"nombre\": \"José Torres\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 90,\n    \"fechaNacimiento\": \"1993-06-01\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 43\n    }\n  },\n  {\n    \"nombre\": \"José Martínez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 5,\n    \"fechaNacimiento\": \"1995-09-04\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 44\n    }\n  },\n  {\n    \"nombre\": \"Juan Torres\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 26,\n    \"fechaNacimiento\": \"1991-08-11\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 45\n    }\n  },\n  {\n    \"nombre\": \"Carlos Vargas\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 32,\n    \"fechaNacimiento\": \"1998-04-22\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 46\n    }\n  },\n  {\n    \"nombre\": \"Diego Pérez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 62,\n    \"fechaNacimiento\": \"1995-06-19\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 47\n    }\n  },\n  {\n    \"nombre\": \"Fernando Sánchez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 89,\n    \"fechaNacimiento\": \"1999-12-22\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 48\n    }\n  },\n  {\n    \"nombre\": \"Javier Martínez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 51,\n    \"fechaNacimiento\": \"1997-07-19\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 49\n    }\n  },\n  {\n    \"nombre\": \"Pedro López\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 36,\n    \"fechaNacimiento\": \"1996-09-05\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 50\n    }\n  },\n  {\n    \"nombre\": \"Miguel Torres\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 78,\n    \"fechaNacimiento\": \"1993-10-28\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 51\n    }\n  },\n  {\n    \"nombre\": \"Andrés Sánchez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 33,\n    \"fechaNacimiento\": \"1999-11-05\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 52\n    }\n  },\n  {\n    \"nombre\": \"José Sánchez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 97,\n    \"fechaNacimiento\": \"2006-04-24\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 53\n    }\n  },\n  {\n    \"nombre\": \"Javier Sánchez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 64,\n    \"fechaNacimiento\": \"1991-08-28\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 54\n    }\n  },\n  {\n    \"nombre\": \"Miguel Rodríguez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 51,\n    \"fechaNacimiento\": \"1993-11-26\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 55\n    }\n  },\n  {\n    \"nombre\": \"José Vargas\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 26,\n    \"fechaNacimiento\": \"2001-10-28\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 56\n    }\n  },\n  {\n    \"nombre\": \"Andrés López\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 2,\n    \"fechaNacimiento\": \"2006-05-29\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 57\n    }\n  },\n  {\n    \"nombre\": \"Pedro Sánchez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 97,\n    \"fechaNacimiento\": \"2005-01-08\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 58\n    }\n  },\n  {\n    \"nombre\": \"Diego Rodríguez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 73,\n    \"fechaNacimiento\": \"2000-07-03\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 59\n    }\n  },\n  {\n    \"nombre\": \"Javier Torres\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 62,\n    \"fechaNacimiento\": \"1998-12-20\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 60\n    }\n  },\n  {\n    \"nombre\": \"Miguel Sánchez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 8,\n    \"fechaNacimiento\": \"1998-01-04\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 61\n    }\n  },\n  {\n    \"nombre\": \"Miguel Martínez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 98,\n    \"fechaNacimiento\": \"1995-05-28\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 62\n    }\n  },\n  {\n    \"nombre\": \"Luis Martínez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 69,\n    \"fechaNacimiento\": \"2000-01-01\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 63\n    }\n  },\n  {\n    \"nombre\": \"Javier Torres\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 66,\n    \"fechaNacimiento\": \"1991-02-16\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 64\n    }\n  },\n  {\n    \"nombre\": \"Andrés Ramírez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 61,\n    \"fechaNacimiento\": \"1999-07-23\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 65\n    }\n  },\n  {\n    \"nombre\": \"Miguel López\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 56,\n    \"fechaNacimiento\": \"2004-09-01\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 66\n    }\n  },\n  {\n    \"nombre\": \"Fernando Torres\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 30,\n    \"fechaNacimiento\": \"1991-08-15\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 67\n    }\n  },\n  {\n    \"nombre\": \"Carlos Martínez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 41,\n    \"fechaNacimiento\": \"1995-08-05\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 68\n    }\n  },\n  {\n    \"nombre\": \"Luis Sánchez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 50,\n    \"fechaNacimiento\": \"1996-12-03\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 69\n    }\n  },\n  {\n    \"nombre\": \"Miguel Martínez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 47,\n    \"fechaNacimiento\": \"2001-12-16\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 70\n    }\n  },\n  {\n    \"nombre\": \"Fernando García\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 57,\n    \"fechaNacimiento\": \"1999-11-21\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 71\n    }\n  },\n  {\n    \"nombre\": \"Fernando Pérez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 96,\n    \"fechaNacimiento\": \"2000-04-20\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 72\n    }\n  },\n  {\n    \"nombre\": \"Fernando López\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 46,\n    \"fechaNacimiento\": \"2003-10-10\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 73\n    }\n  },\n  {\n    \"nombre\": \"Fernando Pérez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 91,\n    \"fechaNacimiento\": \"1997-12-07\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 74\n    }\n  },\n  {\n    \"nombre\": \"José Vargas\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 30,\n    \"fechaNacimiento\": \"1994-05-24\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 75\n    }\n  },\n  {\n    \"nombre\": \"Miguel Castro\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 75,\n    \"fechaNacimiento\": \"2002-04-07\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 76\n    }\n  },\n  {\n    \"nombre\": \"Andrés Rodríguez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 22,\n    \"fechaNacimiento\": \"1996-10-03\",\n    \"nacionalidad\": \"Chileno\",\n    \"equipo\": {\n      \"idEquipo\": 77\n    }\n  },\n  {\n    \"nombre\": \"Javier Ramírez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 35,\n    \"fechaNacimiento\": \"2003-06-29\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 78\n    }\n  },\n  {\n    \"nombre\": \"Javier Rodríguez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 81,\n    \"fechaNacimiento\": \"1994-01-31\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 79\n    }\n  },\n  {\n    \"nombre\": \"Miguel Ramírez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 61,\n    \"fechaNacimiento\": \"2005-06-11\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 80\n    }\n  },\n  {\n    \"nombre\": \"Fernando Pérez\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 16,\n    \"fechaNacimiento\": \"1996-10-08\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 81\n    }\n  },\n  {\n    \"nombre\": \"Andrés López\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 23,\n    \"fechaNacimiento\": \"1997-10-24\",\n    \"nacionalidad\": \"Uruguayo\",\n    \"equipo\": {\n      \"idEquipo\": 82\n    }\n  },\n  {\n    \"nombre\": \"Andrés Sánchez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 4,\n    \"fechaNacimiento\": \"2002-11-05\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 83\n    }\n  },\n  {\n    \"nombre\": \"Juan López\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 74,\n    \"fechaNacimiento\": \"2004-07-20\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 84\n    }\n  },\n  {\n    \"nombre\": \"José López\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 66,\n    \"fechaNacimiento\": \"1996-12-04\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 85\n    }\n  },\n  {\n    \"nombre\": \"Fernando Vargas\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 84,\n    \"fechaNacimiento\": \"1996-04-11\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 86\n    }\n  },\n  {\n    \"nombre\": \"Pedro Torres\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 8,\n    \"fechaNacimiento\": \"2004-09-16\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 87\n    }\n  },\n  {\n    \"nombre\": \"Diego García\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 76,\n    \"fechaNacimiento\": \"1992-06-14\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 88\n    }\n  },\n  {\n    \"nombre\": \"Andrés Vargas\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 20,\n    \"fechaNacimiento\": \"2003-01-01\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 89\n    }\n  },\n  {\n    \"nombre\": \"Fernando Martínez\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 61,\n    \"fechaNacimiento\": \"2001-01-26\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 90\n    }\n  },\n  {\n    \"nombre\": \"Juan Vargas\",\n    \"posicion\": \"Delantero\",\n    \"dorsal\": 19,\n    \"fechaNacimiento\": \"2004-10-25\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 91\n    }\n  },\n  {\n    \"nombre\": \"Carlos Pérez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 37,\n    \"fechaNacimiento\": \"2001-08-14\",\n    \"nacionalidad\": \"Colombiano\",\n    \"equipo\": {\n      \"idEquipo\": 92\n    }\n  },\n  {\n    \"nombre\": \"José Castro\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 66,\n    \"fechaNacimiento\": \"2004-02-10\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 93\n    }\n  },\n  {\n    \"nombre\": \"Juan García\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 7,\n    \"fechaNacimiento\": \"1998-01-03\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 94\n    }\n  },\n  {\n    \"nombre\": \"Pedro García\",\n    \"posicion\": \"Defensa\",\n    \"dorsal\": 30,\n    \"fechaNacimiento\": \"2002-12-19\",\n    \"nacionalidad\": \"Ecuatoriano\",\n    \"equipo\": {\n      \"idEquipo\": 95\n    }\n  },\n  {\n    \"nombre\": \"Carlos Castro\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 67,\n    \"fechaNacimiento\": \"2006-10-10\",\n    \"nacionalidad\": \"Brasileño\",\n    \"equipo\": {\n      \"idEquipo\": 96\n    }\n  },\n  {\n    \"nombre\": \"Carlos Sánchez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 58,\n    \"fechaNacimiento\": \"1991-04-08\",\n    \"nacionalidad\": \"Argentino\",\n    \"equipo\": {\n      \"idEquipo\": 97\n    }\n  },\n  {\n    \"nombre\": \"Luis Ramírez\",\n    \"posicion\": \"Portero\",\n    \"dorsal\": 27,\n    \"fechaNacimiento\": \"1992-02-20\",\n    \"nacionalidad\": \"Mexicano\",\n    \"equipo\": {\n      \"idEquipo\": 98\n    }\n  },\n  {\n    \"nombre\": \"Miguel Pérez\",\n    \"posicion\": \"Centrocampista\",\n    \"dorsal\": 91,\n    \"fechaNacimiento\": \"1995-05-14\",\n    \"nacionalidad\": \"Peruano\",\n    \"equipo\": {\n      \"idEquipo\": 99\n    }\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/jugador/por-equipo/30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"jugador",
+						"por-equipo",
+						"30"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Update data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n        \"idEquipo\": 1,\n        \"nombre\": \"Real madrid\",\n        \"ciudad\": \"Madrid España\",\n        \"fundacion\": \"1950-12-12\"\n        \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/equipo/actualizar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipo",
+						"actualizar",
+						"1"
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/equipo/eliminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipo",
+						"eliminar",
+						"1"
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

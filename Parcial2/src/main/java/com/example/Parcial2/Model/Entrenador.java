@@ -65,4 +65,8 @@ public class Entrenador {
                 ", equipo=" + equipo +
                 '}';
     }
+
+    public void setIdEntrenador(int id) {
+
+    }
 }

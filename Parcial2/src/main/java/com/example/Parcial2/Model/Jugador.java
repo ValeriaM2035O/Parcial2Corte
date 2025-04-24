@@ -14,6 +14,7 @@ public class Jugador {
     private int dorsal;
     private LocalDate fechaNacimiento;
     private String nacionalidad;
+
     @ManyToOne
     @JoinColumn(name = "id_equipo")
     private Equipo equipo;
